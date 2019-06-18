@@ -7,12 +7,12 @@ import {Component} from '@angular/core';
 })
 export class DaysComponent {
 
-  private xAxis: number[];
-  private yAxis: number[];
+  private readonly xAxis: number[];
+  private readonly yAxis: number[];
+  private readonly consultDate: string;
   private date: Date;
-  private consultDate: string;
 
-  public graph: Object;
+  public graph;
 
   constructor() {
     this.xAxis = DaysComponent.fillHours();
@@ -24,39 +24,7 @@ export class DaysComponent {
     this.graph = this.buildGraph();
   }
 
-  private getDate(): string {
-    const day = this.date.getDay();
-    const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const year = this.date.getFullYear();
-
-    return `${month[this.date.getMonth()]} ${day}, ${year}`;
-  }
-
-  private buildGraph() {
-    return {
-      data: [
-        {
-          x: [...this.xAxis],
-          y: [...this.yAxis],
-          type: 'scatter',
-          name: 'One day'
-        },
-      ],
-      layout: {
-        width: 600,
-        height: 400,
-        title: 'Statistics',
-        yaxis: {
-          title: this.consultDate
-        },
-        xaxis: {
-          title: 'Hours'
-        },
-        showlegend: true,
-      }
-    };
-  }
-
+  // Methods
   private static fillHours(): number[] {
     const tempArray = [];
     let randomNumber: number;
@@ -84,5 +52,38 @@ export class DaysComponent {
     }
 
     return tempArray;
+  }
+
+  private getDate(): string {
+    const day = this.date.getDay();
+    const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const year = this.date.getFullYear();
+
+    return `${month[this.date.getMonth()]} ${day}, ${year}`;
+  }
+
+  private buildGraph() {
+    return {
+      data: [
+        {
+          x: [...this.xAxis],
+          y: [...this.yAxis],
+          type: 'scatter',
+          name: `${this.consultDate}`
+        },
+      ],
+      layout: {
+        width: 600,
+        height: 400,
+        title: `Statistics - Days`,
+        yaxis: {
+          title: this.consultDate
+        },
+        xaxis: {
+          title: 'Hours'
+        },
+        showlegend: true,
+      }
+    };
   }
 }
