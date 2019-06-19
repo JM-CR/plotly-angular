@@ -77,7 +77,7 @@ export class DaysComponent {
         height: 400,
         title: `Statistics - Days`,
         yaxis: {
-          title: this.consultDate
+          title: 'Data'
         },
         xaxis: {
           title: 'Hours'

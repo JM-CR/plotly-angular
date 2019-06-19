@@ -55,9 +55,12 @@ export class HoursComponent {
   }
 
   private getDate(): string {
+    const day = this.date.getDay();
+    const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const year = this.date.getFullYear();
     const hour = this.date.getHours();
 
-    return `${hour}:00`;
+    return `${hour}:00, ${month[this.date.getMonth()]} ${day} ${year}`;
   }
 
   private buildGraph() {
@@ -76,7 +79,7 @@ export class HoursComponent {
         height: 400,
         title: `Statistics - Hours`,
         yaxis: {
-          title: this.consultDate
+          title: 'Data'
         },
         xaxis: {
           title: 'Minutes'
