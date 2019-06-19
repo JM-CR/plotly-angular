@@ -69,7 +69,8 @@ export class DaysComponent {
           x: [...this.xAxis],
           y: [...this.yAxis],
           type: 'scatter',
-          name: `${this.consultDate}`
+          name: `${this.consultDate}`,
+	  mode: 'markers'
         },
       ],
       layout: {

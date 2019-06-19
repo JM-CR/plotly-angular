@@ -75,7 +75,8 @@ export class MonthsComponent {
           y: [...this.yAxis],
           type: 'scatter',
           name: `${this.consultDate}`,
-          marker: {color: 'red'}
+          marker: {color: 'red'},
+	  mode: 'markers'
         },
       ],
       layout: {

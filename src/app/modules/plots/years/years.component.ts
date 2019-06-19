@@ -57,7 +57,8 @@ export class YearsComponent {
           y: [...this.yAxis],
           type: 'scatter',
           name: `${this.consultDate}`,
-          marker: {color: 'orange'}
+          marker: {color: 'orange'},
+	  mode: 'markers'
         },
       ],
       layout: {
